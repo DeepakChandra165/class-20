@@ -26,15 +26,19 @@ function setup(){
     backg = createSprite(0,0,975 ,705);
     backg.addImage(garden);
     backg.scale = 2.5;
+   
 
-    cat = createSprite(800,600,200,200);
+    cat = createSprite(800,600,20,20);
     cat.addImage(cat1);
     cat.scale = 0.15;
+    cat.setCollider("rectangle",0,0,cat.width,cat.height);
+cat.debug = true
 
-    mouse = createSprite(200,600,200,200);
+    mouse = createSprite(200,600,20,20);
     mouse.addImage(mouse2);
     mouse.scale = 0.15;
-
+    mouse.setCollider("rectangle",0,0,mouse.width,mouse.height);
+  mouse.debug = true
 }
 
 function draw() {
@@ -49,13 +53,11 @@ if(mouse.x-cat.x<cat.width/2+mouse.width/2
     && cat.y-mouse.y<cat.width/2+mouse.width/2){
 
     cat.velocityX = 0;
-     cat.addAnimation(cat4);
-     cat.changeAnimation(cat4);
+     cat.addImage(cat4);
       
      mouse.addImage(mouse4);
     }
-  cat.debug = true
-  mouse.debug = true
+  
  
     drawSprites();
 }
@@ -65,11 +67,9 @@ function keyPressed(){
 
   if(keyCode === LEFT_ARROW){
       cat.velocityX =-5;
-      cat.addAnimation("catRunning",cat2);
-      cat.addAnimation("catRunning2",cat3);
-      cat.changeAnimation("catRunning");
-      cat.changeAnimation("catRunning2");
+     
 
+      cat.addImage(cat2);
       mouse.addImage(mouse1);
   }
 
